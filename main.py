@@ -24,12 +24,12 @@ def read_csv_file_by_pandas(csv_file):
 def write_to_excel_file_by_pandas(excel_file_path, frame):
   (nrows, ncols) = frame.shape
   excel_writer = pandas.ExcelWriter(excel_file_path, engine='xlsxwriter')
-  frame.to_excel(excel_writer, 'From CSV')
+  # frame.to_excel(excel_writer, 'From CSV')
     
   # My stuff...
   x = excel_writer      # x is the ExcelWriter object
   workbook = x.book     # workbook applies to all the sheets and characteristics within x
-  sheet = x.sheets['From CSV']   # sheet is my worksheet
+  sheet = workbook.add_worksheet('From a Formatted CSV')   # sheet is my worksheet
     
   # Create my cell formats...
   bold = workbook.add_format({'bold': True})
@@ -44,13 +44,13 @@ def write_to_excel_file_by_pandas(excel_file_path, frame):
   width = [0] * ncols
 
   # Write out the column headings
-  for col in range(0, ncols-1):
+  for col in range(0, ncols):
     val = frame.columns[col]
     sheet.write(0, col, val, bold)
 
   # My logic to iterate over `excel_writer`
   for row in range(0, nrows):
-    for col in range(0, ncols-1):
+    for col in range(0, ncols):
       val = frame.values[row, col]
       code = False
       final = val
