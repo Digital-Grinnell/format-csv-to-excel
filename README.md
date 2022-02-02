@@ -2,6 +2,26 @@
 
 This Python3 utility reads a named .csv file and outputs a correspondingly named .xlsx file with formatting.
 
+## Use
+
+The script, `main.py`, uses a Python VENV (Virtual ENVironment) and requires one command-line argument, the path to the .csv file that is to be processed.  An example command-line on my Mac might be:
+
+```markdown
+/Users/mcfatem/GitHub/format-csv-to-excel/venv/bin/python /Users/mcfatem/GitHub/format-csv-to-excel/main.py /Users/mcfatem/Downloads/ihcQ_grinnell_FULL-Feb-1-2022_ih.csv
+```
+
+## Output
+
+The script will attempt to produce a new .xlsx file with the same path as the input .csv file.  For example, the output from the above example command-line was:
+
+```markdown
+/Users/mcfatem/Downloads/ihcQ_grinnell_FULL-Feb-1-2022_ih.xlsx has been created.
+```
+
+The named output file was indeed created as indicated.
+
+## CSV with Formatting
+
 Formats in the .csv are expressed as %CODE% prefixes in each cell.  A simple example excerpt from a prepared .csv file might be:
 
 | | | | | | | |  

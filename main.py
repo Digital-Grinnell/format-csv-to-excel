@@ -8,6 +8,8 @@
 
 import pandas
 import os
+import sys
+
 
 # Read csv file use pandas module.
 def read_csv_file_by_pandas(csv_file):
@@ -76,7 +78,12 @@ def write_to_excel_file_by_pandas(excel_file_path, frame):
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-  data_frame = read_csv_file_by_pandas("/Users/mcfatem/Downloads/ihcQ_grinnell_FULL-Feb-1-2022_ih.csv")
-  write_to_excel_file_by_pandas("/Users/mcfatem/Downloads/ihcQ_grinnell_FULL-Feb-1-2022_ih.xlsx", data_frame)
-
+  csvfile = sys.argv[1]
+  if os.path.exists(csvfile):
+    xlsx = os.path.splitext(csvfile)[0] + '.xlsx'
+    data_frame = read_csv_file_by_pandas(csvfile)
+    write_to_excel_file_by_pandas(xlsx, data_frame)
+  else:
+    sys.exit('Sorry, file ' + csvfile + ' was not found.')
+    
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
