@@ -33,7 +33,7 @@ def write_to_excel_file_by_pandas(excel_file_path, frame):
     bold = workbook.add_format({'bold': True})
     orange = workbook.add_format({'bold': True, 'bg_color': '#FFB347'})
     yellow = workbook.add_format({'bold': True, 'bg_color': '#FFFFBF'})
-    red = workbook.add_format({'bold': True, 'font_color': 'red', 'bg_color': 'yellow'})
+    red = workbook.add_format({'bold': True, 'font_color': 'red', 'bg_color': '#FFFFBF'})
     soft = workbook.add_format({'bold': False, 'font_color': 'gray'})
     green = workbook.add_format({'bold': False, 'font_color': 'green'})
     
