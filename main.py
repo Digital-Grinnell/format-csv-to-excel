@@ -44,13 +44,13 @@ def write_to_excel_file_by_pandas(excel_file_path, frame):
   width = [0] * ncols
 
   # Write out the column headings
-  for col in range(0, ncols):
+  for col in range(0, ncols-1):
     val = frame.columns[col]
     sheet.write(0, col, val, bold)
 
   # My logic to iterate over `excel_writer`
   for row in range(0, nrows):
-    for col in range(0, ncols):
+    for col in range(0, ncols-1):
       val = frame.values[row, col]
       code = False
       final = val
