@@ -9,6 +9,7 @@
 import pandas
 import os
 import sys
+import argparse
 
 
 # Read csv file use pandas module.
@@ -21,7 +22,7 @@ def read_csv_file_by_pandas(csv_file):
   return df
 
 # Write pandas.DataFrame object to an excel file.
-def write_to_excel_file_by_pandas(excel_file_path, frame):
+def write_to_excel_file_by_pandas(excel_file_path, frame, dg):
   (nrows, ncols) = frame.shape
   excel_writer = pandas.ExcelWriter(excel_file_path, engine='xlsxwriter')
   # frame.to_excel(excel_writer, 'From CSV')
@@ -61,6 +62,10 @@ def write_to_excel_file_by_pandas(excel_file_path, frame):
         final = parts[2]
         code = codes[parts[1]]
 
+      # Apply special processing if enabled
+      if dg:
+        final = dg_processing(col, final)
+
       # Write the cell contents
       if code:
         sheet.write(row+1, col, final, code)
@@ -75,15 +80,36 @@ def write_to_excel_file_by_pandas(excel_file_path, frame):
    
   x.save()
   print(excel_file_path + ' has been created.')
+  
+# Define special processing for Digital.Grinnell
+def dg_processing(c, v):
+  # Turn the full PID into a hyperlink
+  if c == 1:
+    link = "https://digital.grinnell.edu/islandora/object/" + v
+    formula = '=HYPERLINK("' + link + '", "' + v + '")'
+    return formula
+  # Nothing to process... return unchanged
+  return v;
+
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-  csvfile = sys.argv[1]
-  if os.path.exists(csvfile):
-    xlsx = os.path.splitext(csvfile)[0] + '.xlsx'
-    data_frame = read_csv_file_by_pandas(csvfile)
-    write_to_excel_file_by_pandas(xlsx, data_frame)
+  parser = argparse.ArgumentParser()
+  parser.add_argument("csvfile", type=str, help="Specify the path of the .csv file for processing")
+  parser.add_argument("--verbose", action="store_true", help="Increase output verbosity")
+  parser.add_argument("--dg", action="store_true", help="Apply 'special' Digital.Grinnell IHC rules")
+  args = parser.parse_args()
+  if args.verbose:
+    print("Verbose output selected.")
+  if args.dg:
+    print("Special Digital.Grinnell processing is selected.")
+  csv = args.csvfile
+ 
+  if os.path.exists(csv):
+    xlsx = os.path.splitext(csv)[0] + '.xlsx'
+    data_frame = read_csv_file_by_pandas(csv)
+    write_to_excel_file_by_pandas(xlsx, data_frame, args.dg)
   else:
-    sys.exit('Sorry, file ' + csvfile + ' was not found.')
+    sys.exit('Sorry, file ' + csv + ' was not found.')
     
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/

@@ -10,6 +10,15 @@ The script, `main.py`, uses a Python VENV (Virtual ENVironment) and requires one
 /Users/mcfatem/GitHub/format-csv-to-excel/venv/bin/python /Users/mcfatem/GitHub/format-csv-to-excel/main.py /Users/mcfatem/Downloads/ihcQ_grinnell_FULL-Feb-1-2022_ih.csv
 ```
 
+## Advanced Use
+
+The script now accepts the following *optional* arguments:
+
+| Argument | Purpose |
+| --- | --- |
+| --verbose | Provides additional diagnostic output |
+| --dg | Runs special DG specific processing |
+
 ## Output
 
 The script will attempt to produce a new .xlsx file with the same path as the input .csv file.  For example, the output from the above example command-line was:
