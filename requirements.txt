@@ -1,0 +1,13 @@
+cffi @ file:///private/tmp/cffi-20230928-4463-nhva21/cffi-1.16.0
+docutils==0.20.1
+Markdown @ file:///private/tmp/python-markdown-20230910-5450-1oodfha/Markdown-3.4.4
+numpy==1.26.1
+pandas==2.1.1
+pycparser==2.21
+Pygments @ file:///private/tmp/pygments-20230806-5780-mo9pes/Pygments-2.16.1
+python-dateutil==2.8.2
+pytz==2023.3.post1
+PyYAML @ file:///private/tmp/pyyaml-20230717-5976-12npxbt/PyYAML-6.0.1
+six==1.16.0
+tzdata==2023.3
+XlsxWriter==3.1.8

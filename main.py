@@ -78,7 +78,7 @@ def write_to_excel_file_by_pandas(excel_file_path, frame, dg):
         sheet.set_column(col, col, w)
         width[col] = w
    
-  x.save()
+  x._save()
   print(excel_file_path + ' has been created.')
   
 # Define special processing for Digital.Grinnell

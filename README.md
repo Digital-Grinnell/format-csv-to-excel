@@ -6,8 +6,9 @@ This Python3 utility reads a named .csv file and outputs a correspondingly named
 
 The script, `main.py`, uses a Python VENV (Virtual ENVironment) and requires one command-line argument, the path to the .csv file that is to be processed.  An example command-line on my Mac might be:
 
-```markdown
-/Users/mcfatem/GitHub/format-csv-to-excel/venv/bin/python /Users/mcfatem/GitHub/format-csv-to-excel/main.py /Users/mcfatem/Downloads/ihcQ_grinnell_FULL-Feb-1-2022_ih.csv
+```bash
+source .venv/bin/activate
+python3 main.py /Users/mcfatem/Downloads/ihcQ_grinnell_FULL-Feb-1-2022_ih.csv
 ```
 
 ## Advanced Use
@@ -23,7 +24,7 @@ The script now accepts the following *optional* arguments:
 
 The script will attempt to produce a new .xlsx file with the same path as the input .csv file.  For example, the output from the above example command-line was:
 
-```markdown
+```bash
 /Users/mcfatem/Downloads/ihcQ_grinnell_FULL-Feb-1-2022_ih.xlsx has been created.
 ```
 
